@@ -68,7 +68,7 @@ class JwtUtil (
     }
 
     fun generateToken(user: UserEntity): AuthTokenResponse {
-        val refreshToken = createRefreshToken(user);
+        val refreshToken = createRefreshToken(user)
         redisService.storeRefreshToken(user.id, refreshToken)
         return AuthTokenResponse(
             accessToken = createToken(user),
@@ -104,8 +104,8 @@ class JwtUtil (
     fun getUserId(token: String): Long {
         return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).payload.get(
             "id",
-            Long::class.java
-        )
+            Integer::class.java
+        ).toLong()
     }
 
     fun getUsername(token: String): String {
