@@ -54,7 +54,7 @@ class AuthService (
         if (authRefreshRequest.refreshToken.isEmpty())
             throw CustomException(JwtErrorCode.JWT_EMPTY_EXCEPTION)
 
-        val id: Long = jwtUtil.getUserId(authRefreshRequest. refreshToken)
+        val id: Long = jwtUtil.getUserId(authRefreshRequest.refreshToken)
         val user = userRepository.findById(id).orElseThrow {
             throw CustomException(UserErrorCode.USER_NOT_FOUND)
         }
