@@ -1,5 +1,6 @@
 package com.authtemplate.domain.user.service
 
+import com.authtemplate.domain.user.dto.request.PutUserRequest
 import com.authtemplate.domain.user.dto.response.GetUserResponse
 import com.authtemplate.domain.user.entity.UserEntity
 import com.authtemplate.domain.user.exception.UserErrorCode
@@ -26,6 +27,15 @@ class UserService (
 
     fun getUser(userId: Long): GetUserResponse {
         val user = userRepository.findById(userId).orElseThrow{CustomException(UserErrorCode.USER_NOT_FOUND)}
+        return formUser(user)
+    }
+
+    fun putMe(principal: Principal, putUserRequest: PutUserRequest): GetUserResponse {
+        val user = userRepository.findByUsername(principal.name).orElseThrow{ CustomException(UserErrorCode.USER_NOT_FOUND) }
+
+        user.username = putUserRequest.username
+
+        userRepository.save(user)
         return formUser(user)
     }
 }
