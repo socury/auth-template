@@ -1,8 +1,10 @@
 package com.authtemplate.domain.user.controller
 
+import com.authtemplate.domain.user.dto.request.PatchPasswordRequest
 import com.authtemplate.domain.user.dto.request.PutUserRequest
 import com.authtemplate.domain.user.dto.response.GetUserResponse
 import com.authtemplate.domain.user.service.UserService
+import com.authtemplate.global.dto.BaseResponse
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.*
@@ -30,5 +32,11 @@ class UserController (
     @PutMapping("/me")
     fun putMe(principal: Principal, @RequestBody putUserRequest: PutUserRequest ): GetUserResponse {
         return userService.putMe(principal, putUserRequest)
+    }
+
+    @Operation(summary = "패스워드 변경")
+    @PatchMapping("/me")
+    fun patchPassword(principal: Principal, @RequestBody request: PatchPasswordRequest): BaseResponse<Unit> {
+        return userService.patchPassword(principal, request)
     }
 }
