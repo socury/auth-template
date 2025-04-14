@@ -6,9 +6,9 @@ spring:
     redis:
       host: ${REDIS_HOST}
       port: 6379
+      password: ${REDIS_PASSWORD}
 
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${DB_URL}
     username: ${DB_USER}
     password: ${DB_PASSWORD}
@@ -22,9 +22,9 @@ spring:
     show-sql: true
 
 jwt:
+  access: 360000
+  refresh: 30000000
   secret: ${JWT_SECRET}
-  access-token-expire-time: 3600000
-  refresh-token-expire-time: 604800000
 
 springdoc:
   api-docs:
