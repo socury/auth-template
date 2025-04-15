@@ -12,4 +12,8 @@ class BasicExceptionHandler {
     fun basicExceptionHandler(e: BasicException): ResponseEntity<ErrorResponse> {
         return ErrorResponse.responseEntity(e.statusCode);
     }
+    @ExceptionHandler(Exception::class)
+    fun handleAll(e: Exception): ResponseEntity<ErrorResponse> {
+        return ErrorResponse.responseEntity(GlobalStatusCode.INTERNAL_SERVER_ERROR)
+    }
 }

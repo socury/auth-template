@@ -20,4 +20,8 @@ class UserService(
     fun findByEmail(email: String): UserEntity {
         return userRepository.findByEmail(email) ?: throw UserNotFoundException()
     }
+
+    fun findByUsername(username: String): UserEntity {
+        return userRepository.findByUsername(username) ?: throw UserNotFoundException()
+    }
 }

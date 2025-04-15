@@ -8,6 +8,7 @@ import org.springframework.web.filter.OncePerRequestFilter
 import authtemplate.application.support.data.ErrorResponseSender
 import authtemplate.application.support.exception.GlobalStatusCode
 import authtemplate.core.exception.BasicException
+import org.hibernate.query.sqm.tree.SqmNode.log
 
 @Component
 class TokenExceptionHandlerFilter(
@@ -23,6 +24,7 @@ class TokenExceptionHandlerFilter(
         } catch (e: BasicException) {
             errorSender.send(response, e.statusCode)
         } catch (e: Exception) {
+            log.error(e.message, e)
             errorSender.send(response, GlobalStatusCode.INTERNAL_SERVER_ERROR)
         }
     }

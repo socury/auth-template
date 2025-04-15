@@ -4,7 +4,7 @@ import io.jsonwebtoken.Jwts
 import org.springframework.stereotype.Component
 import authtemplate.application.support.token.enumeration.TokenType
 import authtemplate.infrastructure.domain.rds.user.entity.UserEntity
-import pang.pangserver.infrastructure.domain.redis.token.service.TokenRedisService
+import authtemplate.infrastructure.domain.redis.token.service.TokenRedisService
 import authtemplate.infrastructure.security.token.properties.TokenProperties
 import java.lang.System.currentTimeMillis
 import java.util.*

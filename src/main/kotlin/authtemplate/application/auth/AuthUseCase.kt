@@ -1,4 +1,4 @@
-package pang.pangserver.application.auth
+package authtemplate.application.auth
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Component
@@ -12,7 +12,7 @@ import authtemplate.application.support.data.Response
 import authtemplate.infrastructure.domain.rds.user.entity.UserEntity
 import authtemplate.infrastructure.domain.rds.user.exception.PasswordNotMatchException
 import authtemplate.infrastructure.domain.rds.user.service.UserService
-import pang.pangserver.infrastructure.domain.redis.token.service.TokenRedisService
+import authtemplate.infrastructure.domain.redis.token.service.TokenRedisService
 import authtemplate.infrastructure.security.token.core.TokenParser
 import authtemplate.infrastructure.security.token.core.TokenProvider
 
@@ -33,19 +33,19 @@ class AuthUseCase(
 
     @Transactional(readOnly = true)
     fun login(request: SignInRequest): DataResponse<TokenResponse> {
-        val user: UserEntity = userService.findByEmail(request.email)
+        val user: UserEntity = userService.findByUsername(request.username)
         checkIfPasswordIsCorrect(request.password, user.password)
         return DataResponse.ok("login successful", createTokens(user))
     }
 
     fun refresh(request: RefreshRequest): DataResponse<TokenResponse> {
-        val member: UserEntity = userService.findByEmail(tokenParser.findUsername(request.refresh))
-        tokenRedisService.checkIfRefreshTokenIsCorrect(request.refresh, member.username)
-        return DataResponse.ok("refresh token successful", createTokens(member))
+        val user: UserEntity = userService.findByEmail(tokenParser.findUsername(request.refresh))
+        tokenRedisService.checkIfRefreshTokenIsCorrect(request.refresh, user.username)
+        return DataResponse.ok("refresh token successful", createTokens(user))
     }
 
     private fun checkIfPasswordIsCorrect(rawPassword: String, encodedPassword: String) {
-        if(encoder.matches(rawPassword, encodedPassword)) throw PasswordNotMatchException()
+        if(!encoder.matches(rawPassword, encodedPassword)) throw PasswordNotMatchException()
     }
 
     private fun createTokens(member: UserEntity): TokenResponse {

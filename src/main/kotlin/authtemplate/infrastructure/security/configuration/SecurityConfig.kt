@@ -17,7 +17,7 @@ class SecurityConfig(
     private val tokenExceptionHandlerFilter: TokenExceptionHandlerFilter
 ) {
     @Bean
-    fun filterChain(http: HttpSecurity): SecurityFilterChain {
+    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
             .csrf { it.disable() }
             .formLogin{ it.disable() }
