@@ -34,9 +34,4 @@ class AuthController(
     fun refresh(@RequestBody request: RefreshRequest): DataResponse<TokenResponse> {
         return useCase.refresh(request)
     }
-
-    @GetMapping("/test")
-    fun test(): String {
-        return "asdf"
-    }
 }
