@@ -28,14 +28,11 @@ class TokenFilter (
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        val path: String = request.servletPath
-
-        if (path.startsWith("/auth") || path.startsWith("/swagger-ui") || path.startsWith("/v3/api-docs")) {
+        if (request.getHeader("Authorization").isNullOrEmpty()) {
             filterChain.doFilter(request, response)
             return
         }
-
-        val bearerToken: String = request.getHeader("Authorization")?: throw EmptyTokenException()
+        val bearerToken: String = request.getHeader("Authorization")
 
         if (!bearerToken.startsWith("Bearer "))
             throw InvalidTokenException()
