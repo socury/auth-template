@@ -13,8 +13,8 @@ import authtemplate.application.support.data.Response
 class UserController(
     private val useCase: UserUseCase
 ) {
-    @PatchMapping
-    fun update(@RequestBody request: UpdateUserRequest): Response {
-        return useCase.update(request);
-    }
+//    @PatchMapping
+//    fun update(@RequestBody request: UpdateUserRequest): Response {
+//        return useCase.update(request);
+//    }
 }
