@@ -1,5 +1,6 @@
 package authtemplate.infrastructure.domain.rds.user.entity
 
+import authtemplate.application.user.data.request.UpdateUserRequest
 import jakarta.persistence.*
 import authtemplate.infrastructure.domain.rds.user.enumeration.UserRole
 import authtemplate.infrastructure.domain.rds.support.entity.BasicEntity
@@ -21,4 +22,9 @@ class UserEntity (
     var password: String,
 
     var role: UserRole,
-): BasicEntity()
+): BasicEntity() {
+    fun update(request: UpdateUserRequest) {
+        this.username = request.username
+        this.email = request.email
+    }
+}
