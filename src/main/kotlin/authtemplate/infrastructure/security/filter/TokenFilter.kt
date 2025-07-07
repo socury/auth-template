@@ -1,17 +1,15 @@
 package authtemplate.infrastructure.security.filter
 
 import authtemplate.application.support.token.enumeration.TokenType
-import authtemplate.domain.rds.user.entity.UserDetails
-import authtemplate.domain.rds.user.exception.UserNotFoundException
-import authtemplate.domain.rds.user.repository.UserRepository
+import authtemplate.domain.user.entity.UserDetails
+import authtemplate.domain.user.exception.UserNotFoundException
+import authtemplate.domain.user.repository.UserRepository
 import authtemplate.infrastructure.security.token.core.TokenParser
 import authtemplate.infrastructure.security.token.core.TokenValidator
-import authtemplate.infrastructure.security.token.exception.EmptyTokenException
 import authtemplate.infrastructure.security.token.exception.InvalidTokenException
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import org.hibernate.query.sqm.tree.SqmNode.log
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component

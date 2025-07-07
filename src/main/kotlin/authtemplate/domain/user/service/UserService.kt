@@ -1,10 +1,10 @@
-package authtemplate.domain.rds.user.service
+package authtemplate.domain.user.service
 
 import org.springframework.stereotype.Service
-import authtemplate.domain.rds.user.entity.UserEntity
-import authtemplate.domain.rds.user.exception.UserAlreadyExistsException
-import authtemplate.domain.rds.user.exception.UserNotFoundException
-import authtemplate.domain.rds.user.repository.UserRepository
+import authtemplate.domain.user.entity.UserEntity
+import authtemplate.domain.user.exception.UserAlreadyExistsException
+import authtemplate.domain.user.exception.UserNotFoundException
+import authtemplate.domain.user.repository.UserRepository
 
 @Service
 class UserService(

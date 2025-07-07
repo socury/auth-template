@@ -1,4 +1,4 @@
-package authtemplate.domain.rds.user.exception
+package authtemplate.domain.user.exception
 
 import authtemplate.core.exception.BasicException
 

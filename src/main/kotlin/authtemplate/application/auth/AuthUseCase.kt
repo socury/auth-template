@@ -9,9 +9,9 @@ import authtemplate.application.auth.data.request.SignUpRequest
 import authtemplate.application.auth.data.response.TokenResponse
 import authtemplate.application.support.data.DataResponse
 import authtemplate.application.support.data.Response
-import authtemplate.domain.rds.user.entity.UserEntity
-import authtemplate.domain.rds.user.exception.PasswordNotMatchException
-import authtemplate.domain.rds.user.service.UserService
+import authtemplate.domain.user.entity.UserEntity
+import authtemplate.domain.user.exception.PasswordNotMatchException
+import authtemplate.domain.user.service.UserService
 import authtemplate.infrastructure.redis.token.service.TokenRedisService
 
 import authtemplate.infrastructure.security.token.core.TokenParser

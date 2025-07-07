@@ -1,8 +1,8 @@
-package authtemplate.domain.rds.user.repository
+package authtemplate.domain.user.repository
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
-import authtemplate.domain.rds.user.entity.UserEntity
+import authtemplate.domain.user.entity.UserEntity
 import java.util.*
 
 @Repository

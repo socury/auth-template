@@ -1,8 +1,8 @@
 package authtemplate.application.auth.data.request
 
 import jakarta.validation.constraints.Email
-import authtemplate.domain.rds.user.entity.UserEntity
-import authtemplate.domain.rds.user.enumeration.UserRole
+import authtemplate.domain.user.entity.UserEntity
+import authtemplate.domain.user.enumeration.UserRole
 
 data class SignUpRequest(
     @Email val email: String,

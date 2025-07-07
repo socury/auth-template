@@ -3,7 +3,7 @@ package authtemplate.infrastructure.security.token.core
 import io.jsonwebtoken.Jwts
 import org.springframework.stereotype.Component
 import authtemplate.application.support.token.enumeration.TokenType
-import authtemplate.domain.rds.user.entity.UserEntity
+import authtemplate.domain.user.entity.UserEntity
 import authtemplate.infrastructure.redis.token.service.TokenRedisService
 import authtemplate.infrastructure.security.token.properties.TokenProperties
 import java.lang.System.currentTimeMillis
