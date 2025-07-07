@@ -1,9 +1,9 @@
 package authtemplate.infrastructure.security.filter
 
 import authtemplate.application.support.token.enumeration.TokenType
-import authtemplate.infrastructure.domain.rds.user.entity.UserDetails
-import authtemplate.infrastructure.domain.rds.user.exception.UserNotFoundException
-import authtemplate.infrastructure.domain.rds.user.repository.UserRepository
+import authtemplate.domain.rds.user.entity.UserDetails
+import authtemplate.domain.rds.user.exception.UserNotFoundException
+import authtemplate.domain.rds.user.repository.UserRepository
 import authtemplate.infrastructure.security.token.core.TokenParser
 import authtemplate.infrastructure.security.token.core.TokenValidator
 import authtemplate.infrastructure.security.token.exception.EmptyTokenException

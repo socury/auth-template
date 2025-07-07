@@ -1,9 +1,9 @@
-package authtemplate.infrastructure.domain.rds.user.entity
+package authtemplate.domain.rds.user.entity
 
 import authtemplate.application.user.data.request.UpdateUserRequest
+import authtemplate.domain.rds.support.entity.BasicEntity
+import authtemplate.domain.rds.user.enumeration.UserRole
 import jakarta.persistence.*
-import authtemplate.infrastructure.domain.rds.user.enumeration.UserRole
-import authtemplate.infrastructure.domain.rds.support.entity.BasicEntity
 import java.util.*
 
 @Entity(name = "users")

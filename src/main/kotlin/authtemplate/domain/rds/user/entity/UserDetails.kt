@@ -1,4 +1,4 @@
-package authtemplate.infrastructure.domain.rds.user.entity
+package authtemplate.domain.rds.user.entity
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails

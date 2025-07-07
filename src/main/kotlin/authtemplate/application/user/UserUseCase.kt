@@ -3,7 +3,7 @@ package authtemplate.application.user
 import org.springframework.stereotype.Component
 import authtemplate.application.support.data.Response
 import authtemplate.application.user.data.request.UpdateUserRequest
-import authtemplate.infrastructure.domain.rds.user.repository.UserRepository
+import authtemplate.domain.rds.user.repository.UserRepository
 import authtemplate.infrastructure.security.token.support.UserAuthenticationHolder
 
 @Component

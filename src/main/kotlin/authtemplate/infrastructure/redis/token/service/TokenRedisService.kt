@@ -1,4 +1,4 @@
-package authtemplate.infrastructure.domain.redis.token.service
+package authtemplate.infrastructure.redis.token.service
 
 import org.springframework.data.redis.core.StringRedisTemplate
 import org.springframework.stereotype.Service

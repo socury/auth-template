@@ -2,8 +2,8 @@ package authtemplate.infrastructure.security.token.support
 
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component
-import authtemplate.infrastructure.domain.rds.user.entity.UserDetails
-import authtemplate.infrastructure.domain.rds.user.entity.UserEntity
+import authtemplate.domain.rds.user.entity.UserDetails
+import authtemplate.domain.rds.user.entity.UserEntity
 
 @Component
 object UserAuthenticationHolder {

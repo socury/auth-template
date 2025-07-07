@@ -1,4 +1,4 @@
-package authtemplate.infrastructure.domain.rds.user.enumeration
+package authtemplate.domain.rds.user.enumeration
 
 enum class UserRole(val value: String) {
     MEMBER("ROLE_USER"),

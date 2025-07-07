@@ -1,4 +1,4 @@
-package authtemplate.infrastructure.domain.rds.support.entity
+package authtemplate.domain.rds.support.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners
