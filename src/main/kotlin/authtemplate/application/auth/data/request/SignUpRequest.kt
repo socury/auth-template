@@ -14,7 +14,7 @@ data class SignUpRequest(
             email = email,
             username = username,
             password = encodedPassword,
-            role = UserRole.MEMBER
+            role = UserRole.USER
         )
     }
 }
