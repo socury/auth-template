@@ -1,7 +1,7 @@
 package authtemplate.application.support.data
 
 import org.springframework.http.ResponseEntity
-import authtemplate.core.exception.StatusCode
+import authtemplate.infrastructure.common.exception.StatusCode
 
 class ErrorResponse(
     override val status: Int,

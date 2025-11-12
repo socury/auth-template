@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import authtemplate.application.support.data.ErrorResponse
-import authtemplate.core.exception.BasicException
+import authtemplate.infrastructure.common.exception.BasicException
 
 @RestControllerAdvice
 class BasicExceptionHandler {

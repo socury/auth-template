@@ -1,5 +1,5 @@
 package authtemplate.infrastructure.security.exception
 
-import authtemplate.core.exception.BasicException
+import authtemplate.infrastructure.common.exception.BasicException
 
 class RefreshTokenNotMatchException : BasicException(AuthStatusCode.REFRESH_TOKEN_NOT_MATCH)

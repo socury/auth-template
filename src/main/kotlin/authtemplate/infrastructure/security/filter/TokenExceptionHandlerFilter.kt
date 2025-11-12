@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 import authtemplate.application.support.data.ErrorResponseSender
 import authtemplate.application.support.exception.GlobalStatusCode
-import authtemplate.core.exception.BasicException
+import authtemplate.infrastructure.common.exception.BasicException
 import org.hibernate.query.sqm.tree.SqmNode.log
 
 @Component

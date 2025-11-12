@@ -1,6 +1,6 @@
 package authtemplate.infrastructure.security.token.exception
 
-import authtemplate.core.exception.StatusCode
+import authtemplate.infrastructure.common.exception.StatusCode
 
 enum class TokenStatusCode(
     override val status: Int,

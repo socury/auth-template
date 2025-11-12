@@ -50,6 +50,7 @@ dependencies {
     testImplementation("io.kotest.extensions:kotest-extensions-spring:1.3.0")
     testImplementation("io.mockk:mockk:1.13.11")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+    testImplementation("com.navercorp.fixturemonkey:fixture-monkey-starter-kotlin:1.1.14")
 }
 
 kotlin {

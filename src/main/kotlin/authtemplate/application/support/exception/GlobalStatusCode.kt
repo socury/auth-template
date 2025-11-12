@@ -1,6 +1,6 @@
 package authtemplate.application.support.exception
 
-import authtemplate.core.exception.StatusCode
+import authtemplate.infrastructure.common.exception.StatusCode
 
 enum class GlobalStatusCode(
     override val status: Int,

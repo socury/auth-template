@@ -1,6 +1,6 @@
 package authtemplate.infrastructure.security.token.exception
 
-import authtemplate.core.exception.BasicException
+import authtemplate.infrastructure.common.exception.BasicException
 
 class FakeTokenException: BasicException(TokenStatusCode.FAKE_TOKEN)
 class TokenExpiredException: BasicException(TokenStatusCode.TOKEN_EXPIRED)
