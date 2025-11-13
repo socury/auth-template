@@ -19,23 +19,24 @@ import org.springframework.web.filter.OncePerRequestFilter
 class TokenFilter (
     private val tokenParser: TokenParser,
     private val tokenValidator: TokenValidator,
-    private val memberRepository: UserRepository
+    private val userRepository: UserRepository
 ): OncePerRequestFilter() {
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        if (request.getHeader("Authorization").isNullOrEmpty()) {
+        val bearerToken: String? = request.getHeader("Authorization")
+        
+        if (bearerToken.isNullOrEmpty()) {
             filterChain.doFilter(request, response)
             return
         }
-        val bearerToken: String = request.getHeader("Authorization")
 
         if (!bearerToken.startsWith("Bearer "))
             throw InvalidTokenException()
 
-        val token: String = bearerToken.removePrefix("Bearer ")
+        val token: String = bearerToken.substring(7)
         tokenValidator.validateAll(token, TokenType.ACCESS_TOKEN)
         setAuthentication(token)
 
@@ -43,11 +44,11 @@ class TokenFilter (
     }
 
     private fun setAuthentication(token: String) {
-        val member = getMemberDetails(token)
-        SecurityContextHolder.getContext().authentication = UsernamePasswordAuthenticationToken(member, null, member.authorities)
+        val user = getUserDetails(token)
+        SecurityContextHolder.getContext().authentication = UsernamePasswordAuthenticationToken(user, null, user.authorities)
     }
 
-    private fun getMemberDetails(token: String): UserDetails {
-        return UserDetails(memberRepository.findByUsername(tokenParser.findUsername(token))?: throw UserNotFoundException())
+    private fun getUserDetails(token: String): UserDetails {
+        return UserDetails(userRepository.findByUsername(tokenParser.findUsername(token))?: throw UserNotFoundException())
     }
 }
