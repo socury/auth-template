@@ -15,6 +15,6 @@ class UserController(
 ) {
     @PatchMapping
     fun update(@RequestBody request: UpdateUserRequest): Response {
-        return useCase.update(request);
+        return useCase.update(request)
     }
 }
