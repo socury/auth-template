@@ -25,9 +25,6 @@ class TokenValidator(
     fun validate(token: String) {
         try {
             parser.findType(token)
-            if (
-                parser.findExpiration(token).before(Date())
-            ) throw TokenExpiredException()
         } catch (e: ExpiredJwtException) {
             throw TokenExpiredException()
         } catch (e: SignatureException) {
