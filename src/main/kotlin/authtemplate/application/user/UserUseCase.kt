@@ -8,10 +8,11 @@ import authtemplate.infrastructure.security.token.support.UserAuthenticationHold
 
 @Component
 class UserUseCase(
-    private val repository: UserRepository
+    private val repository: UserRepository,
+    private val holder: UserAuthenticationHolder,
 ) {
     fun update(request: UpdateUserRequest): Response {
-        val user = UserAuthenticationHolder.current()
+        val user = holder.current()
         user.update(request)
         repository.save(user)
         return Response.ok("update successful")
