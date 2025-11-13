@@ -10,12 +10,12 @@ import authtemplate.domain.user.repository.UserRepository
 class UserService(
     private val userRepository: UserRepository
 ) {
-    fun validateMemberDuplicated(username: String, email: String) {
+    fun validateUserDuplicated(username: String, email: String) {
         if(userRepository.findByEmailOrUsername(email, username).isNotEmpty()) throw UserAlreadyExistsException()
     }
 
-    fun save(member: UserEntity)
-        = userRepository.save(member)
+    fun save(user: UserEntity)
+        = userRepository.save(user)
 
     fun findByEmail(email: String): UserEntity {
         return userRepository.findByEmail(email) ?: throw UserNotFoundException()

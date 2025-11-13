@@ -18,7 +18,6 @@ import authtemplate.infrastructure.security.token.core.TokenParser
 import authtemplate.infrastructure.security.token.core.TokenProvider
 
 @Component
-@Transactional(rollbackFor = [Exception::class])
 class AuthUseCase(
     private val userService: UserService,
     private val provider: TokenProvider,
@@ -26,8 +25,9 @@ class AuthUseCase(
     private val tokenParser: TokenParser,
     private val tokenRedisService: TokenRedisService
 ) {
+    @Transactional
     fun register(request: SignUpRequest): Response {
-        userService.validateMemberDuplicated(request.username, request.email)
+        userService.validateUserDuplicated(request.username, request.email)
         userService.save(request.toEntity(encoder.encode(request.password)))
         return Response.ok("register successful")
     }
@@ -39,9 +39,11 @@ class AuthUseCase(
         return DataResponse.ok("login successful", createTokens(user))
     }
 
+    @Transactional(readOnly = true)
     fun refresh(request: RefreshRequest): DataResponse<TokenResponse> {
-        val user: UserEntity = userService.findByUsername(tokenParser.findUsername(request.refresh))
-        tokenRedisService.checkIfRefreshTokenIsCorrect(request.refresh, user.username)
+        val username = tokenParser.findUsername(request.refresh)
+        tokenRedisService.checkIfRefreshTokenIsCorrect(request.refresh, username)
+        val user: UserEntity = userService.findByUsername(username)
         return DataResponse.ok("refresh token successful", createTokens(user))
     }
 
@@ -49,10 +51,10 @@ class AuthUseCase(
         if(!encoder.matches(rawPassword, encodedPassword)) throw PasswordNotMatchException()
     }
 
-    private fun createTokens(member: UserEntity): TokenResponse {
+    private fun createTokens(user: UserEntity): TokenResponse {
         return TokenResponse(
-            provider.generateAccess(member),
-            provider.generateRefresh(member)
+            provider.generateAccess(user),
+            provider.generateRefresh(user)
         )
     }
 }
